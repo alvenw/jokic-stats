@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import Header from './Header';
+import RecentGames from './RecentGames';
+import LastGame from './LastGame';
+import SeasonAverage from './SeasonAverage';
+import NavBar from './NavBar';
+import Content from './Content';      
 import './App.css';
 
 function App() {
+  const [currentView, setCurrentView] = useState([]);
+
+
+
+  const changeView = (view) => {
+    setCurrentView(currentView = view);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <ViewsContext.Provider value={[currentView, setCurrentView]}>
+
+    <Header/>
+
+    <NavBar/>
+    
+    <Content/>
+
+
+    </ViewsContext.Provider>
   );
 }
 
+const ViewsContext = React.createContext();
+
+
 export default App;
+
