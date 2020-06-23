@@ -6,9 +6,9 @@ const NavBar = () => {
 		<React.Fragment>
 			<div className="NavBar">
 				<div className="NavBar-Container">
-					<Tab name={"Overview"}></Tab>
-					<Tab name={"Recent Games"}></Tab>
-					<Tab name={"Career Stats"}></Tab>
+					<Tab path="/" name="Overview"></Tab>
+					<Tab path="log" name="Game Log"></Tab>
+					<Tab path="averages" name="Career Stats"></Tab>
 				</div>
 			</div>
 		</React.Fragment>

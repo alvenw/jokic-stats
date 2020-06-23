@@ -1,38 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
-import DataTable from 'react-data-table-component';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 import StatsView from './StatsView';
 import columns from './columns';
 
-const LastGame = () => {
-	const [season, setSeason] = useState(columns.options[0]);
+
+const GameLog = () => {
+  const [season, setSeason] = useState(columns.options[0]);
   const sets = (option) => {
     setSeason(option.label);
   }
 
   const gameLogURL = 'https://www.balldontlie.io/api/v1/stats?player_ids[]=246&per_page=100&seasons[]=' + season.slice(0,4);
 
-
-
   return (
     <React.Fragment>
-    <StatsView url={gameLogURL} season={season} formatData={formatGameLog} columnFormat={columns.log} title={"Last Game"}/>
-    <Link to="./log">
-      <button>
-        See all
-      </button>
-    </Link>
+      
+      <div className="Dropdown-wrapper">
+        <div className="Dropdown-title">
+          Game Log
+        </div>
+        <Dropdown options={columns.options} onChange={sets} placeholder="2019-2020" value={season} className="Dropdown-item"/>     
+      </div>
+      <StatsView url={gameLogURL} season={season} formatData={formatGameLog} columnFormat={columns.log} title={season}/>
+
     </React.Fragment>
-  )
+  );
 }
 
-export default LastGame;
+export default GameLog;
+
+
+
+// const DropdownHeader = (props) => {
+//   return (
+//     <div className="Dropdown-wrapper">
+//       <div className="Dropdown-title">
+//         Game Log
+//       </div>
+//       <Dropdown options={options} onChange={thprops.setter} placeholder="2019-2020" className="Dropdown-item"/>     
+//     </div>
+//   )
+// }
 
 function formatGameLog (array) {
   sortDate(array);
   formatDate(array);
   formatResult(array);
-  array.splice(5);
 }
 
 function formatDate(array) {
@@ -41,6 +55,7 @@ function formatDate(array) {
   array.map((array) => {
       array.game.date = array.game.date.slice(0,10);
       array.game.date = new Date(array.game.date).toLocaleDateString(undefined, options);
+      return array;
     }
   )
 }
@@ -69,5 +84,7 @@ function formatResult(array) {
     
     array.opponent = opponent
     array.score = result + " " + score;
+
+    return array;
   }))
 }
