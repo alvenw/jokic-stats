@@ -8,9 +8,7 @@ import LastGame from './LastGame';
 const Content = () => {
 	return (
 		<BrowserRouter>
-
 			<NavBar/>
-
 			<div className="Content">
 				<div className="Content-wrapper">
 					<Route exact path="/" component={LastGame}/>

@@ -9,11 +9,10 @@ function App() {
   return (
 
     <React.Fragment>
-
-    <Header/>
-   
-    <Content/>
-
+    	<div className="App">
+		    <Header/>
+		    <Content/>
+			</div>
     </React.Fragment>
   );
 }

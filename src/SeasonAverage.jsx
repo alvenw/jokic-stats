@@ -10,11 +10,10 @@ function SeasonAverage() {
       
       <div className="Dropdown-wrapper">
         <div className="Dropdown-title">
-          Game Log
+          Career Stats
         </div>
       </div>
       <StatsView url={averagesURL} columnFormat={columns.average} formatData={formatAverages} title={"Season Averages"}/>
-
     </React.Fragment>
   )
 }

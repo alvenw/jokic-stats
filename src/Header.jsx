@@ -21,7 +21,7 @@ const PlayerInfo = () => {
 	return (
 		<div className="Player-info">
 				<div className="Player-info-body">
-					Jokic Stats
+					JOKIC STATS
 				</div>
 		</div>
 	)

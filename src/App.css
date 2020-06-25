@@ -1,9 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Playfair+Display:wght@900&Roboto+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Playfair+Display:wght@900&family=Overpass+Mono:wght@300;700&display=swap');
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
 .Header-container {
   height: 300px;
   background-color: #0E2240;
   display: flex;
+  flex: 0 1 300px;
 }
 
 .Header-wrapper {
@@ -12,11 +19,7 @@
   position: absolute;
   left: 0;
   right: 0;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+  align-self: center;
 }
 
 .Player-picture {
@@ -35,15 +38,16 @@
 
 .Player-info-body {
   font-size: 48pt;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Overpass Mono', monospace;
+  font-weight: 700;
   color: #CDCDCD;
   margin-left: 40px;
 }
 
 .NavBar {
-  height: 60px;
   width: 100%;
   background-color: #0d3964;
+  flex: 0 1 60px;
 }
 
 .NavBar-Container {
@@ -76,13 +80,20 @@
   min-height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex: 1 1 auto;
 }
 
 .Content-wrapper {
   margin-top: 30px;
-  width: 60%;
+  margin-bottom: 30px;
+  width: 90%;
   height: 90%;
+}
+
+@media (min-width: 1440px) {
+  .Content-wrapper {
+    width: 60%;
+  }
 }
 
 .Dropdown-wrapper {
@@ -98,8 +109,8 @@
 .Dropdown-title {
   display: inline-block;
   margin-left: 15px;
-  font-size: 24px;
-  font-family: 'Lato', sans-serif;
+  font-size: 16pt;
+  font-family: 'Overpass Mono', monospace;
 }
 
 .Dropdown-item {
@@ -108,35 +119,18 @@
 }
 
 .DataTable {
-  font-family: 'Roboto Mono', monospace;
+  font-family: 'Overpass Mono', monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Button {
+  width: 100px;
+  height: 40px;
+  margin-top: 20px;
+  background-color: white;
+  border: none;
+  font-size: 11pt;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor:  pointer;
 }

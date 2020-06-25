@@ -5,7 +5,7 @@ import columns from './columns';
 
 const StatsView = (props) => {
 	const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [pending, setPending] = useState(true);
   const [games, setGames] = useState([]);
   
 
@@ -14,16 +14,11 @@ const StatsView = (props) => {
       .then(res => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
-          
-
+          setPending(false);
           props.formatData(result.data);
-
-          console.log(result.data)
           setGames(result.data);
         },
         (error) => {
-          setIsLoaded(true);
           setError(error);
         }
       )
@@ -31,8 +26,6 @@ const StatsView = (props) => {
 
   if (error) {
     return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
   } else {
     return (
       <DataTable
@@ -40,6 +33,9 @@ const StatsView = (props) => {
         title={props.title}
         columns={props.columnFormat}
         data={games}
+        progressPending={pending}
+        defaultSortAsc={false}
+        customStyles={customStyles}
         style={{'borderRadius': '5px'}}
       />
     );
@@ -48,7 +44,12 @@ const StatsView = (props) => {
 
 export default StatsView;
 
-
-
-
+const customStyles = {
+  headCells: {
+    style: {
+      fontSize: '11pt',
+      fontWeight: '600'
+    },
+  },
+}
 
