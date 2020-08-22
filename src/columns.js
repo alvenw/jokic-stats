@@ -170,6 +170,33 @@ const columns = {
         return Number.parseFloat(data.fg3_pct).toPrecision(3);
       }
     },
+    {
+      name: 'FTM',
+      selector: 'ftm',
+      width: '80px',
+      style: style,
+      right: true,
+      sortable: true,
+    },
+    {
+      name: 'FTA',
+      selector: 'fta',
+      width: '80px',
+      style: style,
+      right: true,
+      sortable: true,
+    },
+    {
+      name: 'FT%',
+      selector: 'ft_pct',
+      width: '80px',
+      style: style,
+      right: true,
+      sortable: true,
+      format: (data) => {
+        return Number.parseFloat(data.ft_pct*100).toPrecision(3);
+      }
+    }
   ],
   average: [
     {
